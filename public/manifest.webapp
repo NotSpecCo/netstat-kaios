@@ -1,0 +1,30 @@
+{
+  "id": "dev.nothing.netstat",
+  "name": "Netstat",
+  "description": "View network data usage",
+  "version": "1.0.0",
+  "launch_path": "/index.html",
+  "icons": {
+    "128": "/images/icon_128.png",
+    "112": "/images/icon_112.png",
+    "56": "/images/icon_56.png"
+  },
+  "theme_color": "#012a42",
+  "developer": {
+    "name": "Garrett Downs",
+    "url": "https://nothing.dev"
+  },
+  "type": "certified",
+  "permissions": {
+    "mobileconnection": {},
+    "networkstats-manage": {},
+    "webapps-manage": {}
+  },
+  "locales": {
+    "en-US": {
+      "name": "Netstat",
+      "description": "View network data usage"
+    }
+  },
+  "default_locale": "en-US"
+}
