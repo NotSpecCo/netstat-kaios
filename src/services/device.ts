@@ -12,13 +12,19 @@ export class Device {
       return Promise.resolve([
         {
           name: 'My App 1',
+          origin: 'app://app1',
           manifestUrl: 'app1',
           iconUrl: '/images/default_icon.png',
           role: '',
-          stats: { [NetworkType.Wifi]: [], [NetworkType.Sim1]: [], [NetworkType.Sim2]: [] },
+          stats: {
+            [NetworkType.Wifi]: [{ date: new Date(), received: 10000000, sent: 1 }],
+            [NetworkType.Sim1]: [{ date: new Date(), received: 20000000, sent: 1 }],
+            [NetworkType.Sim2]: [],
+          },
         },
         {
           name: 'My App 2',
+          origin: 'app://app1',
           manifestUrl: 'app2',
           iconUrl: '/images/default_icon.png',
           role: '',
@@ -26,6 +32,7 @@ export class Device {
         },
         {
           name: 'My App 3',
+          origin: 'app://app1',
           manifestUrl: 'app3',
           iconUrl: '/images/default_icon.png',
           role: '',
@@ -33,6 +40,7 @@ export class Device {
         },
         {
           name: 'My App 4',
+          origin: 'app://app1',
           manifestUrl: 'app4',
           iconUrl: '/images/default_icon.png',
           role: '',
@@ -40,6 +48,7 @@ export class Device {
         },
         {
           name: 'My App 5',
+          origin: 'app://app1',
           manifestUrl: 'app5',
           iconUrl: '/images/default_icon.png',
           role: '',

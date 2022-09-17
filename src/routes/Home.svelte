@@ -3,27 +3,31 @@
   import Typography from 'onyx-ui/components/Typography.svelte';
   import View from 'onyx-ui/components/view/View.svelte';
   import ViewContent from 'onyx-ui/components/view/ViewContent.svelte';
+  import { replace } from 'svelte-spa-router';
+  import AppRow from '../components/AppRow.svelte';
   import { NetworkType } from '../enums';
-  import type { Sample } from '../models';
+  import type { App, Sample } from '../models';
   import { apps } from '../stores/apps';
 
+  export let params: { type: NetworkType };
+  let type = Number(params.type);
+  $: {
+    type = Number(params.type);
+  }
+
   type Result = {
-    appIconUrl: string;
-    appName: string;
+    app: App;
     dataUsed: number;
   };
 
   let dateRange: number = 31;
-  let type: NetworkType = NetworkType.Wifi;
   let results: Result[] = [];
 
   $: {
     results = $apps
-      .filter((app) => !app.role)
       .map((app) => {
         return {
-          appIconUrl: app.iconUrl,
-          appName: app.name,
+          app,
           dataUsed: addSamples(app.stats[type].slice(0, dateRange)),
         };
       })
@@ -66,15 +70,13 @@
         { id: NetworkType.Sim1, label: 'SIM 1' },
         { id: NetworkType.Sim2, label: 'SIM 2' },
       ]}
-      onChange={(val) => (type = Number(val))}
+      onChange={(val) => {
+        replace(`/home/${val}`);
+      }}
     />
     <div class="results">
       {#each results as result}
-        <div class="result">
-          <img src={result.appIconUrl} alt="" class="icon" />
-          <div class="name">{result.appName}</div>
-          <div class="data">{result.dataUsed} MB</div>
-        </div>
+        <AppRow app={result.app} {type} dataUsed={result.dataUsed} />
       {:else}
         <Typography align="center">No apps used data during this time period.</Typography>
       {/each}
@@ -83,20 +85,6 @@
 </View>
 
 <style>
-  .result {
-    display: flex;
-    align-items: center;
-    padding: 5px;
-  }
-  .icon {
-    height: 28px;
-    width: 28px;
-    margin-right: 5px;
-  }
-  .name {
-    flex: 1;
-  }
-
   .results {
     padding: 10px 0px;
   }

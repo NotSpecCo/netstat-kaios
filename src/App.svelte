@@ -4,8 +4,9 @@
   import OnyxApp from 'onyx-ui/components/app/OnyxApp.svelte';
   import { Onyx } from 'onyx-ui/services';
   import { onDestroy, onMount } from 'svelte';
-  import Router, { pop, replace } from 'svelte-spa-router';
+  import Router, { location, pop, replace } from 'svelte-spa-router';
   import AppMenu from './components/AppMenu.svelte';
+  import AppDetail from './routes/AppDetail.svelte';
   import Home from './routes/Home.svelte';
   import Loading from './routes/Loading.svelte';
   import Redirect from './routes/Redirect.svelte';
@@ -17,11 +18,22 @@
   OnyxNavigation.startListening();
 
   const routes = {
-    '/': Home,
+    '/home/:type': Home,
+    '/app/:appOrigin/:initialType': AppDetail,
     '/loading': Loading,
     '*': Redirect,
   };
 
+  // TODO: Fix this in a better way
+  document.addEventListener('keydown', (ev) => {
+    if (
+      ev.key === 'Backspace' &&
+      $location !== '/' &&
+      (ev.target as any).contentEditable !== 'true'
+    ) {
+      ev.preventDefault();
+    }
+  });
   const keys = OnyxKeys.subscribe(
     {
       onBackspace: async (ev) => !ev.detail.targetIsInput && pop(),

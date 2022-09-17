@@ -9,6 +9,7 @@ export function toApp(source: any): App {
 
   return {
     name: source.manifest.name,
+    origin: source.origin,
     manifestUrl: source.manifestURL,
     iconUrl: `${source.origin}${iconPath}`,
     role: source.role,

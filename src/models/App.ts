@@ -4,6 +4,7 @@ import type { Sample } from './Sample';
 export type App = {
   name: string;
   iconUrl: string;
+  origin: string;
   manifestUrl: string;
   role: '' | 'system' | 'theme' | 'homescreen' | 'input';
   stats: {
