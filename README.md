@@ -1,6 +1,6 @@
 # Netstat
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/garredow/netstat/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/garredow/netstat/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/garredow/netstat-kaios/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/garredow/netstat-kaios/tree/main)
 
 View network data usage.
 
