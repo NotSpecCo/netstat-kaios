@@ -41,6 +41,7 @@
 
   function addSamples(samples: Sample[]): number {
     const bytes = samples.reduce((acc, val) => {
+      acc += val.sent;
       acc += val.received;
       return acc;
     }, 0);
