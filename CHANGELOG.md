@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/garredow/netstat-kaios/compare/v1.1.0...v1.1.1) (2022-09-17)
+
+
+### Bug Fixes
+
+* fix menus ([1eb871b](https://github.com/garredow/netstat-kaios/commit/1eb871b810c630c9e62c75b12ddb6702bbaaad27))
+
 # [1.1.0](https://github.com/garredow/netstat-kaios/compare/v1.0.0...v1.1.0) (2022-09-17)
 
 
