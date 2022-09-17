@@ -1,6 +1,5 @@
 <script lang="ts">
   import { OnyxKeys } from 'onyx-keys';
-  import { OnyxNavigation } from 'onyx-navigation';
   import OnyxApp from 'onyx-ui/components/app/OnyxApp.svelte';
   import { Onyx } from 'onyx-ui/services';
   import { onDestroy, onMount } from 'svelte';
@@ -14,8 +13,6 @@
   import { settings } from './stores/settings';
 
   console.log(`Env: ${process.env.NODE_ENV}`);
-
-  OnyxNavigation.startListening();
 
   const routes = {
     '/home/:type': Home,
