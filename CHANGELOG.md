@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/garredow/netstat-kaios/compare/v1.1.1...v1.2.0) (2022-09-17)
+
+
+### Bug Fixes
+
+* inlude sent data in totals ([9aa624f](https://github.com/garredow/netstat-kaios/commit/9aa624f15bbe8a44743500df20c576f16b0aac01))
+
+
+### Features
+
+* add app settings ([db6b15e](https://github.com/garredow/netstat-kaios/commit/db6b15e2a1eae12ced796b2e270de2263a0c1657))
+
 ## [1.1.1](https://github.com/garredow/netstat-kaios/compare/v1.1.0...v1.1.1) (2022-09-17)
 
 
