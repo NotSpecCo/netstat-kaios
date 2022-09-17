@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/garredow/netstat-kaios/compare/v1.0.0...v1.1.0) (2022-09-17)
+
+
+### Features
+
+* add app detail view ([1343b76](https://github.com/garredow/netstat-kaios/commit/1343b7688812df9f83062728f192bd5ed380d476))
+
 # 1.0.0 (2022-09-17)
 
 
