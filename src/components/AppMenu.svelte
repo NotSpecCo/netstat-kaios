@@ -4,7 +4,8 @@
   import { IconSize } from 'onyx-ui/enums';
   import { Onyx } from 'onyx-ui/services';
   import { getShortcutFromIndex } from 'onyx-ui/utils/getShortcutFromIndex';
-  import FaRegClock from 'svelte-icons/fa/FaRegClock.svelte';
+  import MdFormatListBulleted from 'svelte-icons/md/MdFormatListBulleted.svelte';
+  import MdSettings from 'svelte-icons/md/MdSettings.svelte';
   import { push } from 'svelte-spa-router';
 
   type MenuItem = {
@@ -13,7 +14,10 @@
     route: string;
     icon: any | null;
   };
-  const items: MenuItem[] = [{ id: 'home', text: 'Home', route: `/`, icon: FaRegClock }];
+  const items: MenuItem[] = [
+    { id: 'stats', text: 'Stats', route: `/home/0`, icon: MdFormatListBulleted },
+    { id: 'settings', text: 'Settings', route: `/settings`, icon: MdSettings },
+  ];
 </script>
 
 <NavGroup groupId="app-menu">
@@ -25,7 +29,7 @@
     {#each items as item, i}
       <ListItem
         icon={item.icon}
-        imageSize={IconSize.Smallest}
+        imageSize={IconSize.Small}
         primaryText={item.text}
         navi={{
           itemId: item.id,

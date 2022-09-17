@@ -27,15 +27,15 @@ export const themes: ThemeConfig[] = [
       cardColorS: 8,
       cardColorL: 12,
 
-      accentColorH: 202,
-      accentColorS: 98,
-      accentColorL: 15,
+      accentColorH: 182,
+      accentColorS: 25,
+      accentColorL: 82,
 
       textColorH: 0,
       textColorS: 0,
       textColorL: 100,
 
-      focusColorA: 70,
+      focusColorA: 50,
       dividerColorA: 10,
     },
   },

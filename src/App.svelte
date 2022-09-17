@@ -6,6 +6,7 @@
   import Router, { location, pop, replace } from 'svelte-spa-router';
   import AppMenu from './components/AppMenu.svelte';
   import AppDetail from './routes/AppDetail.svelte';
+  import AppSettings from './routes/AppSettings.svelte';
   import Home from './routes/Home.svelte';
   import Loading from './routes/Loading.svelte';
   import Redirect from './routes/Redirect.svelte';
@@ -18,6 +19,7 @@
     '/home/:type': Home,
     '/app/:appOrigin/:initialType': AppDetail,
     '/loading': Loading,
+    '/settings': AppSettings,
     '*': Redirect,
   };
 

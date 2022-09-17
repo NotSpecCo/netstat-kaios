@@ -73,6 +73,6 @@
     border-bottom: 1px solid var(--divider-color);
   }
   tr:nth-child(even) {
-    background-color: #eaeaea;
+    background-color: var(--divider-color);
   }
 </style>
