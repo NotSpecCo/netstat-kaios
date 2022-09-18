@@ -1,19 +1,11 @@
 <script lang="ts">
-  import SelectRow from 'onyx-ui/components/form/SelectRow.svelte';
   import Typography from 'onyx-ui/components/Typography.svelte';
   import View from 'onyx-ui/components/view/View.svelte';
   import ViewContent from 'onyx-ui/components/view/ViewContent.svelte';
-  import { replace } from 'svelte-spa-router';
   import AppRow from '../components/AppRow.svelte';
-  import { NetworkType } from '../enums';
   import type { App, Sample } from '../models';
   import { apps } from '../stores/apps';
-
-  export let params: { type: NetworkType };
-  let type = Number(params.type);
-  $: {
-    type = Number(params.type);
-  }
+  import { filters } from '../stores/filters';
 
   type Result = {
     app: App;
@@ -28,7 +20,7 @@
       .map((app) => {
         return {
           app,
-          dataUsed: addSamples(app.stats[type].slice(0, dateRange)),
+          dataUsed: addSamples(app.stats[$filters.networkType].slice(0, dateRange)),
         };
       })
       .sort((a, b) => {
@@ -49,35 +41,27 @@
     const megabytes = Number((bytes / 1e6).toFixed(2));
     return megabytes;
   }
+
+  function getSubtitle(days: number): string {
+    switch (days) {
+      case 1:
+        return 'Today';
+      case 7:
+        return 'This Week';
+      case 31:
+        return 'This Month';
+    }
+  }
 </script>
 
 <View>
   <ViewContent>
-    <SelectRow
-      label="Date Range"
-      value={dateRange}
-      options={[
-        { id: 1, label: 'Day' },
-        { id: 7, label: 'Week' },
-        { id: 31, label: 'Month' },
-      ]}
-      onChange={(val) => (dateRange = Number(val))}
-    />
-    <SelectRow
-      label="Type"
-      value={type}
-      options={[
-        { id: NetworkType.Wifi, label: 'Wi-Fi' },
-        { id: NetworkType.Sim1, label: 'SIM 1' },
-        { id: NetworkType.Sim2, label: 'SIM 2' },
-      ]}
-      onChange={(val) => {
-        replace(`/home/${val}`);
-      }}
-    />
+    <Typography type="titleLarge" align="center">Data Usage</Typography>
+    <!-- <Typography align="center" padding="none">{getSubtitle($filters.dateRange)}</Typography> -->
+
     <div class="results">
       {#each results as result}
-        <AppRow app={result.app} {type} dataUsed={result.dataUsed} />
+        <AppRow app={result.app} dataUsed={result.dataUsed} />
       {:else}
         <Typography align="center">No apps used data during this time period.</Typography>
       {/each}
@@ -87,6 +71,6 @@
 
 <style>
   .results {
-    padding: 10px 0px;
+    padding: 0px 0px;
   }
 </style>

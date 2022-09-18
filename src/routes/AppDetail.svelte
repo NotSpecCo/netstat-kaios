@@ -1,18 +1,16 @@
 <script lang="ts">
-  import SelectRow from 'onyx-ui/components/form/SelectRow.svelte';
+  import Typography from 'onyx-ui/components/Typography.svelte';
   import View from 'onyx-ui/components/view/View.svelte';
   import ViewContent from 'onyx-ui/components/view/ViewContent.svelte';
-  import { NetworkType } from '../enums';
   import type { Sample } from '../models';
   import { apps } from '../stores/apps';
+  import { filters } from '../stores/filters';
 
-  export let params: { appOrigin: string; initialType: NetworkType };
-
-  let type: NetworkType = Number(params.initialType);
+  export let params: { appOrigin: string };
 
   const app = $apps.find((a) => a.origin === params.appOrigin);
   let samples: Sample[] = [];
-  $: samples = app.stats[type];
+  $: samples = app.stats[$filters.networkType];
 
   function formatData(bytes: number): string {
     const mb = (bytes / 1000000).toFixed(2);
@@ -22,17 +20,7 @@
 
 <View>
   <ViewContent>
-    <SelectRow
-      label="Type"
-      value={type}
-      options={[
-        { id: NetworkType.Wifi, label: 'Wi-Fi' },
-        { id: NetworkType.Sim1, label: 'SIM 1' },
-        { id: NetworkType.Sim2, label: 'SIM 2' },
-      ]}
-      onChange={(val) => (type = Number(val))}
-    />
-
+    <Typography type="titleLarge" align="center">{app.name}</Typography>
     <div class="results">
       <table>
         <tr>
@@ -54,7 +42,6 @@
 
 <style>
   .results {
-    padding: 10px 0px;
   }
   table {
     padding: 10px 5px;

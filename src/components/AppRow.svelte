@@ -1,18 +1,16 @@
 <script lang="ts">
   import NavItem from 'onyx-ui/components/nav/NavItem.svelte';
   import { push } from 'svelte-spa-router';
-  import type { NetworkType } from '../enums';
   import type { App } from '../models';
 
   export let app: App;
-  export let type: NetworkType;
   export let dataUsed: number;
 </script>
 
 <NavItem
   navi={{
     itemId: app.origin,
-    onSelect: () => push(`/app/${encodeURIComponent(app.origin)}/${type}`),
+    onSelect: () => push(`/app/${encodeURIComponent(app.origin)}`),
   }}
 >
   <div class="root">

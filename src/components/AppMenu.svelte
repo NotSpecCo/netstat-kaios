@@ -1,4 +1,6 @@
 <script lang="ts">
+  import InlineSelectRow from 'onyx-ui/components/form/InlineSelectRow.svelte';
+  import ListHeader from 'onyx-ui/components/list/ListHeader.svelte';
   import ListItem from 'onyx-ui/components/list/ListItem.svelte';
   import NavGroup from 'onyx-ui/components/nav/NavGroup.svelte';
   import { IconSize } from 'onyx-ui/enums';
@@ -7,6 +9,8 @@
   import MdFormatListBulleted from 'svelte-icons/md/MdFormatListBulleted.svelte';
   import MdSettings from 'svelte-icons/md/MdSettings.svelte';
   import { push } from 'svelte-spa-router';
+  import { NetworkType } from '../enums';
+  import { filters } from '../stores/filters';
 
   type MenuItem = {
     id: string;
@@ -15,7 +19,7 @@
     icon: any | null;
   };
   const items: MenuItem[] = [
-    { id: 'stats', text: 'Stats', route: `/home/0`, icon: MdFormatListBulleted },
+    { id: 'stats', text: 'Stats', route: `/stats`, icon: MdFormatListBulleted },
     { id: 'settings', text: 'Settings', route: `/settings`, icon: MdSettings },
   ];
 </script>
@@ -44,6 +48,27 @@
         }}
       />
     {/each}
+    <ListHeader title="Filters" />
+    <InlineSelectRow
+      label="Date Range"
+      value={$filters.dateRange}
+      options={[
+        { id: 1, label: 'Day' },
+        { id: 7, label: 'Week' },
+        { id: 31, label: 'Month' },
+      ]}
+      onChange={(val) => filters.updateOne('dateRange', Number(val))}
+    />
+    <InlineSelectRow
+      label="Network"
+      value={$filters.networkType}
+      options={[
+        { id: NetworkType.Wifi, label: 'Wi-Fi' },
+        { id: NetworkType.Sim1, label: 'SIM 1' },
+        { id: NetworkType.Sim2, label: 'SIM 2' },
+      ]}
+      onChange={(val) => filters.updateOne('networkType', Number(val))}
+    />
   </div>
 </NavGroup>
 

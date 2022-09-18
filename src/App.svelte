@@ -7,17 +7,17 @@
   import AppMenu from './components/AppMenu.svelte';
   import AppDetail from './routes/AppDetail.svelte';
   import AppSettings from './routes/AppSettings.svelte';
-  import Home from './routes/Home.svelte';
   import Loading from './routes/Loading.svelte';
   import Redirect from './routes/Redirect.svelte';
+  import Stats from './routes/Stats.svelte';
   import { apps } from './stores/apps';
   import { settings } from './stores/settings';
 
   console.log(`Env: ${process.env.NODE_ENV}`);
 
   const routes = {
-    '/home/:type': Home,
-    '/app/:appOrigin/:initialType': AppDetail,
+    '/stats': Stats,
+    '/app/:appOrigin': AppDetail,
     '/loading': Loading,
     '/settings': AppSettings,
     '*': Redirect,
