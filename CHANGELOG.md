@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/garredow/netstat-kaios/compare/v1.2.0...v1.3.0) (2022-09-18)
+
+
+### Features
+
+* move filters to app menu ([acc1f98](https://github.com/garredow/netstat-kaios/commit/acc1f986784ee590bf4a56bc06289204408d2534))
+
 # [1.2.0](https://github.com/garredow/netstat-kaios/compare/v1.1.1...v1.2.0) (2022-09-17)
 
 
